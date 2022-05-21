@@ -15,14 +15,12 @@ if os.path.isfile('save.txt'):
         print(apps)
 
 
-def addApp():
+def addImg():
 
     for widget in frame.winfo_children():
         widget.destroy()
 
-    filename = filedialog.askopenfilename(initialdir="/", title="Select file",
-                                          filetypes=(("JPEG", "*.jpg"),
-                                                     ("all files", "*.*")))
+    filename = filedialog.askopenfilename(initialdir="/", title="Select file",filetypes=(("JPEG", "*.jpg"),("all files", "*.*")))
     apps.append(filename)
     print(apps)
     for app in apps:
@@ -30,12 +28,12 @@ def addApp():
         label.pack()
 
 
-def runApps():
+def runImg():
     for app in apps:
         os.startfile(app)
 
 
-def batching():
+def editImg():
     for app in apps:
         img = Image.open(app)
         img = img.resize((1080, 1080))
@@ -67,17 +65,17 @@ canvas.pack()
 frame = tk.Frame(root, bg='white')
 frame.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.8)
 
-openFile = tk.Button(root, text="Open File", padx=25,
-                     pady=10, fg='white', bg="#263D42", command=addApp)
+openFile = tk.Button(root, text="Select File", padx=25,
+                     pady=10, fg='white', bg="#263D42", command=addImg)
 openFile.pack()
 
-runApps = tk.Button(root, text="Run Apps", padx=25,
-                    pady=10, fg='white', bg="#263D42", command=runApps)
-runApps.pack()
+runImgs = tk.Button(root, text="Open File", padx=25,
+                pady=10, fg='white', bg="#263D42", command=runImg)
+runImgs.pack()
 
-batch = tk.Button(root, text="Batch", padx=25,
-                  pady=10, fg='white', bg="#263D42", command=batching)
-batch.pack()
+edit = tk.Button(root, text="Edit File", padx=25,
+                  pady=10, fg='white', bg="#263D42", command=editImg)
+edit.pack()
 
 lb = Label(frame, image=fon)
 lb.place(x=0, y=0, relheight=1, relwidth=1)
