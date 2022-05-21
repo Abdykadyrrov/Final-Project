@@ -20,8 +20,9 @@ def addApp():
     for widget in frame.winfo_children():
         widget.destroy()
 
-    filename = filedialog.askopenfilename(
-        initialdir="/", title="Select file", filetypes=(("JPEG", "*.jpg"), ("all files", "*.*")))
+    filename = filedialog.askopenfilename(initialdir="/", title="Select file",
+                                          filetypes=(("JPEG", "*.jpg"),
+                                                     ("all files", "*.*")))
     apps.append(filename)
     print(apps)
     for app in apps:
@@ -32,6 +33,7 @@ def addApp():
 def runApps():
     for app in apps:
         os.startfile(app)
+
 
 def batching():
     for app in apps:
@@ -74,11 +76,11 @@ runApps = tk.Button(root, text="Run Apps", padx=25,
 runApps.pack()
 
 batch = tk.Button(root, text="Batch", padx=25,
-                     pady=10, fg='white', bg="#263D42", command=batching)
+                  pady=10, fg='white', bg="#263D42", command=batching)
 batch.pack()
 
-lb= Label(frame, image=fon)
-lb.place(x=0,y=0, relheight=1, relwidth=1)
+lb = Label(frame, image=fon)
+lb.place(x=0, y=0, relheight=1, relwidth=1)
 lb.pack()
 
 for app in apps:
